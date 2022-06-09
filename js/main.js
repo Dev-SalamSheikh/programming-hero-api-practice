@@ -83,11 +83,16 @@ function markMileStone(checkbox, id) {
     doneList.appendChild(item);
   } else {
     // back to main list
-    milestonesList.appendChild(item);
     doneList.removeChild(item);
+    milestonesList.appendChild(item);
 
-    // task - do the sorting
-    // reload list
+    // Sorting Milestones
+    const divs = document.querySelectorAll(".milestones .milestone"),
+      listItem = [];
+
+    divs.forEach((div) => listItem.push(div));
+    listItem.sort((a, b) => a.id - b.id);
+    listItem.forEach((item) => milestonesList.appendChild(item));
   }
 }
 
